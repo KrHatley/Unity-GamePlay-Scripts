@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GenericInteraction : MonoBehaviour {
-
+public class GenericInteraction : MonoBehaviour
+{
     [SerializeField] int Raydistance; // integer variable to declare the distance of raycast, assigned in UI editor
     private RaycastHit hit = new RaycastHit(); // private Raycast Hit object assigned when raycast hits an object
 
@@ -13,12 +13,14 @@ public class GenericInteraction : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
 		
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	void FixedUpdate ()
+    {
         Debug.DrawRay(transform.position, this.transform.forward, Color.green);/*
         shows the raycast in editor scene inorder to help determine correct ray distance and whether it is touching an object
         */
@@ -28,8 +30,5 @@ public class GenericInteraction : MonoBehaviour {
             Debug.Log("Activated!");
             Debug.Log(hit.transform.gameObject.name);//Logs the new tag of the hit object in the editor console
         }
-
-
     }
-   
 }

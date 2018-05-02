@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GenericReverseGravity : MonoBehaviour,IActivateable {
+/// <summary>
+/// Attached to an interactable object, reverse gravity for limited time
+/// </summary>
+public class GenericReverseGravity : MonoBehaviour,IActivateable
+{
 
     private bool isActive; // private bool to be activated from FPSController GenericInteraction script
     [SerializeField] float waitTime; // arbitrary time to wait
@@ -14,20 +18,19 @@ public class GenericReverseGravity : MonoBehaviour,IActivateable {
 
     private void Awake()
     {
-        
         isActive = false;//initializes is active to false upon runtime
         rbody = GetComponent<Rigidbody>();// gets the rigid body component of the gameobject this is attached to
     }
 
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
 		
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
-        
-
+	void FixedUpdate ()
+    {
         if (isActive)//condition: bool isActive is equal to true
         {
             rbody.useGravity = false;//turns off the use of gravity for the attached rigid body
@@ -39,9 +42,9 @@ public class GenericReverseGravity : MonoBehaviour,IActivateable {
         else
         {
             rbody.useGravity = true;// turns gravity back on for the attached rigidbody
-           
         }
 	}
+
     private IEnumerator CheckingActive()//defintion of CheckingActive Coroutine
     {
         while (isActive)// Condition : isActive is equal to true

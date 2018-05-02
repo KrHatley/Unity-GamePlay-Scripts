@@ -3,7 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GenericPull : MonoBehaviour,IActivateable {
+/// <summary>
+/// A "gravity" object that pulls all objects under the correct layermask like a magnet.
+/// </summary>
+public class GenericPull : MonoBehaviour,IActivateable
+{
    [SerializeField] private bool isActive;// displays variable in editor for designer testing
     private Rigidbody rbody;// rigid body variable for accessing physics and other garabage
     
@@ -22,32 +26,31 @@ public class GenericPull : MonoBehaviour,IActivateable {
         isActive = false;// sets the bool to false
     }
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
         // nothing to see here
     }
 	
 	// Update is called once per frame
-	void FixedUpdate () {
-
+	void FixedUpdate ()
+    {
         ObjectsToPull = Physics.OverlapSphere(transform.position, Radius, mask);// finds all coliders that also have the matching layer and adds to array
         if (isActive)// if isActive is equal to true
-        {
-           
+        {      
             foreach (Collider c in ObjectsToPull)// operates the following code on each object in this array
             {
                  Vector3 PullDir = transform.position - c.transform.position;// sets a direction in which the object needs to move
-                c.attachedRigidbody.AddForce(PullDir * Gravpull, ForceMode.Force);// applies the direction and force to move the object
+                 c.attachedRigidbody.AddForce(PullDir * Gravpull, ForceMode.Force);// applies the direction and force to move the object
                 //repeat for each object in array
-            }
-            
-           
+            }   
         }
-       
 	}
+
     private void OnDrawGizmos()// editor method
     {
         Gizmos.DrawWireSphere(transform.position, Radius);// draws the sphere cast for designer benefit
     }
+
     public bool SetActive()//implementation of Interface
     {
         isActive = !isActive;// assigns true or false depending on the current value of isActive
