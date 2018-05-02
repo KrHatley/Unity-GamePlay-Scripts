@@ -3,7 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GenericSlow : MonoBehaviour,IActivateable {
+/// <summary>
+///  Meant to slow 
+/// </summary>
+
+public class GenericSlow : MonoBehaviour,IActivateable
+{
     [SerializeField] private bool isActive;
     [SerializeField] private float tempTimeScale;// set in editor, recommended value is 0.85
     [SerializeField] private float normTimeScale;
@@ -67,12 +72,9 @@ public class GenericSlow : MonoBehaviour,IActivateable {
                 {
                     if (item.rigidbody != Hits[i].rigidbody)
                     {
-                       
-                            slowedDownBodies.Add(item.rigidbody);//find a better way
-                        
+                            slowedDownBodies.Add(item.rigidbody);//find a better way 
                     }
                 }
-                
             }
         }
     }
@@ -118,7 +120,6 @@ public class GenericSlow : MonoBehaviour,IActivateable {
             item.mass /= tempTimeScale;
             item.velocity *= tempTimeScale;
             item.angularVelocity *= tempTimeScale;
-
         }
     }
 
