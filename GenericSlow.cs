@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-///  Meant to slow 
+///  Meant to slow objects normal movement speed
 /// </summary>
 
 public class GenericSlow : MonoBehaviour,IActivateable
